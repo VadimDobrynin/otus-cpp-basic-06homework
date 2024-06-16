@@ -4,16 +4,13 @@
 #include "Containers.h"
 
 ///---------------------------------------------------------------------------------------------------------------------
+/*!
+ * Добавление элемента в конец спсика.
+ */
 void MyVector::push_back(int value) {
-    /*!
-     * проверка на то,
-     * было ли хоть раз что то добавлено
-     */
     if(adr == nullptr){
-        size_vector = 1;
-        size_reserved = 2 * size_vector;
         adr = new int[size_reserved];
-        adr[count] = value;
+        adr[0] = value;
         count++;
     }else{
         if(count == size_reserved){
@@ -36,17 +33,31 @@ void MyVector::push_back(int value) {
 int MyVector::operator[] (int index) {
     return adr[index];
 }
-void MyVector::erase(size_t index) {
-    if(index == count - 1){
-        count--;
-    }else if(index < count - 1){
+/*!
+ * Удаление элемента из списка по индексу.
+ * Если индекс больше размера массива, операция игнорируется(возвращается false);
+ */
+bool MyVector::erase(size_t index) {
+    if(index <= count - 1){
         for(size_t i = index; i < count - 1; i++){
             adr[i] = adr[i + 1];
         }
         count--;
+        return true;
     }
+    return false;
 }
-void MyVector::insert(size_t index, int value) {
+/*!
+ *
+ * @param index
+ * @param value
+ * @return false - в случае неуспеха операции
+ */
+bool MyVector::insert(size_t index, int value) {
+    ///< невозможная позиция
+    if(index > count){
+        return false;
+    }
     if(count == size_reserved){
         int* tmp = new int[2 * size_reserved];
         for(size_t i = 0; i < index; i++){
@@ -61,16 +72,13 @@ void MyVector::insert(size_t index, int value) {
         delete[] adr;
         adr = tmp;
     }else{
-        for(size_t i = 0; i < index; i++){
-            adr[i] = adr[i];
-        }
         for(size_t i = count; i > index; i--){
             adr[i] = adr[i - 1];
         }
         adr[index] = value;
         count++;
     }
-
+    return true;
 }
 size_t MyVector::size(){
     return this->count;

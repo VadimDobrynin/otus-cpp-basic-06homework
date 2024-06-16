@@ -14,17 +14,16 @@
 
 class MyVector : public IContainers{
 public:
-    MyVector() : adr{nullptr}, size_vector{0}, size_reserved{0}, count{0} {}
+    MyVector() : adr{nullptr}, size_reserved{2}, count{0} {}
     void push_back(int) override;
     int operator[](int) override;
-    void erase(size_t) override;
-    void insert(size_t, int) override;
+    bool erase(size_t) override;
+    bool insert(size_t, int) override;
     size_t size() override;
     ~MyVector(){
         delete[] adr;
     }
 private:
-    size_t size_vector;
     size_t size_reserved;
     size_t count;
     int* adr;

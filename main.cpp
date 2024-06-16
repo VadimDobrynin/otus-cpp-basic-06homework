@@ -14,6 +14,7 @@ int main() {
     v.push_back(7);
     v.push_back(8);
     v.push_back(9);
+    std::cout << "---";
     for(int i = 0 ; i < v.size(); i++){
         std::cout << v[i] << " ";
     }
@@ -21,6 +22,7 @@ int main() {
     v.erase(3);
     v.erase(4);
     std::cout << std::endl;
+    std::cout << "---";
     for(int i = 0 ; i < v.size(); i++){
         std::cout << v[i] << " ";
     }
@@ -30,7 +32,6 @@ int main() {
     for(int i = 0 ; i < v.size(); i++){
         std::cout << v[i] << " ";
     }
-    std::cout << std::endl <<  v.size() << std::endl;
     v.insert(v.size(), 30);
     std::cout << std::endl;
     for(int i = 0 ; i < v.size(); i++){
