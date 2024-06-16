@@ -99,14 +99,6 @@ void MyLinkedList::push_back(int value) {
     count_elements++;
 }
 int MyLinkedList::operator[] (int index) {
-//    MyLinkedList* indexObject = this;
-//    if(index < count_elements){
-//        for(size_t i = 0; i < index; i++){
-//            indexObject = indexObject->nextObject;
-//        }
-//        return indexObject->val;
-//    }
-//    return val;
        auto res = get(index);
        if(res == nullptr){
            return val;
@@ -115,7 +107,27 @@ int MyLinkedList::operator[] (int index) {
        }
 }
 bool MyLinkedList::erase(size_t index) {
-    return false;
+    if(index < count_elements){
+        auto tmp_prev = get(index - 1);
+        auto tmp_index = get(index);
+        if(tmp_prev == nullptr) {
+            if(tmp_index->nextObject != nullptr){
+                tmp_index->val = tmp_index->nextObject->val;
+                auto t = tmp_index->nextObject;
+                tmp_index->nextObject = tmp_index->nextObject->nextObject;
+                count_elements--;
+                delete t;
+                return true;
+            }
+        }else{
+            tmp_prev->nextObject = tmp_index->nextObject;
+            count_elements--;
+            delete tmp_index;
+            return true;
+        }
+    }else{
+        return false;
+    }
 }
 bool MyLinkedList::insert(size_t index, int value) {return false;}
 size_t MyLinkedList::size() {return count_elements;}

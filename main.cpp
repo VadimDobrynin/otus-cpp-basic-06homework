@@ -44,21 +44,34 @@ int main() {
         std::cout << v[i] << " ";
     }
     std::cout << std::endl << "------------------" << std::endl;
+    std::cout << std::endl << "******Linked List******" << std::endl;
     ///-------------------------------------
     MyLinkedList mll;
     for(int i = 0; i < 10;i++){
         mll.push_back(i);
     }
-//    mll.push_back(7);
-//    mll.push_back(8);
-//    mll.push_back(9);
-//    std::cout << mll[0] << " ";
-//    std::cout << mll[1] << " ";
-//    std::cout << mll[2] << " ";
-
-    for(int i = mll.size() - 1 ; i > 0; i--){
+    for(int i = 0 ; i < mll.size(); i++){
         std::cout << mll[i] << " ";
     }
+    std::cout << std::endl;
+    std::cout << mll.size() << " ";
+
+    mll.erase(2);
+    std::cout << mll.size() << " ";
+
+    mll.erase(3);
+    std::cout << mll.size() << " ";
+
+    mll.erase(4);
+    std::cout << mll.size() << " ";
+
+    std::cout << std::endl;
+    std::cout << "---";
+    for(int i = 0 ; i < mll.size(); i++){
+        std::cout << mll[i] << " ";
+    }
+
+
     ///-------------------------------------
 
 
