@@ -85,3 +85,50 @@ size_t MyVector::size(){
 }
 ///---------------------------------------------------------------------------------------------------------------------
 
+void MyLinkedList::push_back(int value) {
+    if(count_elements == 0){
+        this->val = value;
+        count_elements += 1;
+        return;
+    }
+    MyLinkedList* lastObject = this;
+    while(lastObject->nextObject != nullptr){
+        lastObject = lastObject->nextObject;
+    }
+    lastObject->nextObject = new MyLinkedList(value);
+    count_elements++;
+}
+int MyLinkedList::operator[] (int index) {
+//    MyLinkedList* indexObject = this;
+//    if(index < count_elements){
+//        for(size_t i = 0; i < index; i++){
+//            indexObject = indexObject->nextObject;
+//        }
+//        return indexObject->val;
+//    }
+//    return val;
+       auto res = get(index);
+       if(res == nullptr){
+           return val;
+       }else{
+           return res->val;
+       }
+}
+bool MyLinkedList::erase(size_t index) {
+    return false;
+}
+bool MyLinkedList::insert(size_t index, int value) {return false;}
+size_t MyLinkedList::size() {return count_elements;}
+
+MyLinkedList* MyLinkedList::get(size_t index){
+    MyLinkedList* indexObject = this;
+    if(index < count_elements){
+        for(size_t i = 0; i < index; i++){
+            indexObject = indexObject->nextObject;
+        }
+        return indexObject;
+    }
+    return nullptr;
+}
+
+///---------------------------------------------------------------------------------------------------------------------

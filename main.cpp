@@ -43,5 +43,24 @@ int main() {
     for(int i = 0 ; i < v.size(); i++){
         std::cout << v[i] << " ";
     }
+    std::cout << std::endl << "------------------" << std::endl;
+    ///-------------------------------------
+    MyLinkedList mll;
+    for(int i = 0; i < 10;i++){
+        mll.push_back(i);
+    }
+//    mll.push_back(7);
+//    mll.push_back(8);
+//    mll.push_back(9);
+//    std::cout << mll[0] << " ";
+//    std::cout << mll[1] << " ";
+//    std::cout << mll[2] << " ";
+
+    for(int i = mll.size() - 1 ; i > 0; i--){
+        std::cout << mll[i] << " ";
+    }
+    ///-------------------------------------
+
+
     return 0;
 }
