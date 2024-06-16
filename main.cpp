@@ -32,6 +32,12 @@ int main() {
     for(int i = 0 ; i < v.size(); i++){
         std::cout << v[i] << " ";
     }
+
+    v.insert(4, 20);
+    std::cout << std::endl;
+    for(int i = 0 ; i < v.size(); i++){
+        std::cout << v[i] << " ";
+    }
     v.insert(v.size(), 30);
     std::cout << std::endl;
     for(int i = 0 ; i < v.size(); i++){
