@@ -129,7 +129,22 @@ bool MyLinkedList::erase(size_t index) {
         return false;
     }
 }
-bool MyLinkedList::insert(size_t index, int value) {return false;}
+bool MyLinkedList::insert(size_t index, int value) {
+    if(index == 0){
+        auto item = new MyLinkedList(value);
+        std::swap(this->val, item->val);
+        std::swap(this->nextObject, item->nextObject);
+        this->nextObject = item;
+        count_elements++;
+    }else{
+        auto item_prev = get(index - 1);
+        auto item = new MyLinkedList(value);
+        item->nextObject = item_prev->nextObject;
+        item_prev->nextObject = item;
+        count_elements++;
+    }
+    return true;
+}
 size_t MyLinkedList::size() {return count_elements;}
 
 MyLinkedList* MyLinkedList::get(size_t index){

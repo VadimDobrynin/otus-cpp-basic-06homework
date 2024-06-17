@@ -1,79 +1,55 @@
 #include <iostream>
 #include "containers//Containers.h"
 #include <vector>
+
+void test(IContainers*);
 int main() {
     std::cout << "containers" << std::endl;
-    MyVector v;
-    v.push_back(0);
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(3);
-    v.push_back(4);
-    v.push_back(5);
-    v.push_back(6);
-    v.push_back(7);
-    v.push_back(8);
-    v.push_back(9);
-    std::cout << "---";
-    for(int i = 0 ; i < v.size(); i++){
-        std::cout << v[i] << " ";
-    }
-    v.erase(2);
-    v.erase(3);
-    v.erase(4);
-    std::cout << std::endl;
-    std::cout << "---";
-    for(int i = 0 ; i < v.size(); i++){
-        std::cout << v[i] << " ";
-    }
-
-    v.insert(0, 10);
-    std::cout << std::endl;
-    for(int i = 0 ; i < v.size(); i++){
-        std::cout << v[i] << " ";
-    }
-
-    v.insert(4, 20);
-    std::cout << std::endl;
-    for(int i = 0 ; i < v.size(); i++){
-        std::cout << v[i] << " ";
-    }
-    v.insert(v.size(), 30);
-    std::cout << std::endl;
-    for(int i = 0 ; i < v.size(); i++){
-        std::cout << v[i] << " ";
-    }
-    std::cout << std::endl << "------------------" << std::endl;
-    std::cout << std::endl << "******Linked List******" << std::endl;
-    ///-------------------------------------
-    MyLinkedList mll;
-    for(int i = 0; i < 10;i++){
-        mll.push_back(i);
-    }
-    for(int i = 0 ; i < mll.size(); i++){
-        std::cout << mll[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << mll.size() << " ";
-
-    mll.erase(2);
-    std::cout << mll.size() << " ";
-
-    mll.erase(3);
-    std::cout << mll.size() << " ";
-
-    mll.erase(4);
-    std::cout << mll.size() << " ";
-
-    std::cout << std::endl;
-    std::cout << "---";
-    for(int i = 0 ; i < mll.size(); i++){
-        std::cout << mll[i] << " ";
-    }
-
-
-    ///-------------------------------------
-
+    IContainers* v = new MyVector;
+    IContainers* l = new MyLinkedList;
+    std::cout << "vector" <<std::endl;
+    test(v);
+    std::cout << "linked list" <<std::endl;
+    test(l);
 
     return 0;
+}
+
+void test(IContainers* cont){
+    for(int i = 0; i < 10; i++){
+        cont->push_back(i);
+    }
+    for(int i = 0; i < cont->size(); i++){
+        std::cout << cont->operator[](i) << " ";
+    }
+    std::cout << std::endl;
+    std::cout << cont->size() <<std::endl;
+
+    cont->erase(2);
+    cont->erase(3);
+    cont->erase(4);
+    std::cout << std::endl;
+    for(int i = 0 ; i < cont->size(); i++){
+        std::cout << cont->operator[](i) << " ";
+    }
+    cont->insert(0, 10);
+    std::cout << std::endl;
+    for(int i = 0 ; i < cont->size(); i++){
+        std::cout << cont->operator[](i) << " ";
+    }
+    std::cout << std::endl;
+
+    cont->insert(4, 20);
+    std::cout << std::endl;
+    for(int i = 0 ; i < cont->size(); i++){
+        std::cout << cont->operator[](i) << " ";
+    }
+    std::cout << std::endl;
+
+    cont->insert(cont->size(), 30);
+    std::cout << std::endl;
+    for(int i = 0 ; i < cont->size(); i++){
+        std::cout << cont->operator[](i) << " ";
+    }
+    std::cout << std::endl;
 }
