@@ -1,5 +1,6 @@
 #include <iostream>
-#include "containers//Containers.h"
+#include "containers//vector.h"
+#include "containers//linkedList.h"
 #include <vector>
 
 void test(IContainers*);
@@ -11,6 +12,9 @@ int main() {
     test(v);
     std::cout << "linked list" <<std::endl;
     test(l);
+
+    delete v;
+    delete l;
 
     return 0;
 }

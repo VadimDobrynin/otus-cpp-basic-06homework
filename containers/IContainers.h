@@ -16,7 +16,7 @@ public:
     virtual bool erase(size_t) = 0;
     virtual size_t size() = 0;
     virtual int operator[](int) = 0;
-    virtual ~IContainers(){};
+    virtual ~IContainers() = default;
 };
 
 //IContainers::~IContainers(){}
