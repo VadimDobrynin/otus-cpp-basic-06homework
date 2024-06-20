@@ -9,13 +9,14 @@
  * Интерфейс классов по расчёту статистики
  */
 #include <cstddef>
+template<typename T>
 class IContainers{
 public:
-    virtual void push_back(int) = 0;
-    virtual bool insert(size_t, int)  = 0;
+    virtual void push_back(T) = 0;
+    virtual bool insert(size_t, T)  = 0;
     virtual bool erase(size_t) = 0;
     virtual size_t size() = 0;
-    virtual int operator[](int) = 0;
+    virtual T operator[](size_t) = 0;
     virtual ~IContainers() = default;
 };
 

@@ -3,23 +3,17 @@
 #include "containers//linkedList.h"
 #include <vector>
 
-void test(IContainers*);
+void test(IContainers<int>*);
 int main() {
     std::cout << "containers" << std::endl;
-    IContainers* v = new MyVector;
-    IContainers* l = new MyLinkedList;
     std::cout << "vector" <<std::endl;
-    test(v);
+    test(new MyVector<int>);
     std::cout << "linked list" <<std::endl;
-    test(l);
-
-    delete v;
-    delete l;
-
+    test(new MyLinkedList<int>);
     return 0;
 }
 
-void test(IContainers* cont){
+void test(IContainers<int>* cont){
     for(int i = 0; i < 10; i++){
         cont->push_back(i);
     }
@@ -56,4 +50,5 @@ void test(IContainers* cont){
         std::cout << cont->operator[](i) << " ";
     }
     std::cout << std::endl;
+    delete cont;
 }
